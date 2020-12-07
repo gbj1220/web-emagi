@@ -24,8 +24,9 @@ document.querySelector(`#submit-button`).addEventListener(`click`, () => {
 
     case `search`:
       const newArr = search(userInput)
+      userOutput.innerHTML = ''
       for (const item of newArr) {
-        const newPara = document.createElement("P")
+        const newPara = document.createElement(`P`)
         newPara.innerText = item.symbol
         userOutput.appendChild(newPara)
       }
@@ -36,10 +37,13 @@ document.querySelector(`#submit-button`).addEventListener(`click`, () => {
         userOutput.innerText = randomElement(emojis).symbol
       } else if (userInput.length > 0) {
         userOutput.innerText = randomElement(getCategory(userInput)).symbol
-      } else if (userInput.length > 0)
-        break;
-
+      } else {
+        window.alert(`Invalid input. Please try again.`)
+      }
+      
     default:
-      console.log(`Please try again.`)
+      console.alert( `Welcome. Please select an option to get started!`)
+      // window.alert(`Welcome. Please select an option to get started!`)
+
   }
 })
